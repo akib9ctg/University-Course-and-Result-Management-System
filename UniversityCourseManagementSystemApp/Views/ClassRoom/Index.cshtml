@@ -1,0 +1,124 @@
+﻿@model UniversityCourseManagementSystemApp.Models.ClassRoomAllocation
+@{
+    ViewBag.Title = "Allocate Classrooms";
+}
+<div class="container sm100">
+    <div class="row st_login_form">
+        <div class="col-md-offset-3 col-md-6">
+            <div class="addDepartment">
+                <h3>Allocate Classroom</h3>
+                @using (Html.BeginForm(null, null, FormMethod.Post))
+                {
+                    <table>
+                        <tr>
+                            <td align="right">
+                                @Html.LabelFor(x => x.DepartmentId)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(x => x.DepartmentId, new SelectList(ViewBag.Departments, "Value", "Text"))<br />
+                                <span>@Html.ValidationMessageFor(x => x.DepartmentId)</span><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                @Html.Label("Course")
+                            </td>
+                            <td>
+                                <select name="CourseId" id="CourseId">
+                                    <option value="">---Select---</option>
+                                </select><br/>
+                                <span>@Html.ValidationMessageFor(x => x.CourseId)</span><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                @Html.LabelFor(x => x.RoomNoId)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(x => x.RoomNoId, new SelectList(ViewBag.ClassRooms, "Value", "Text"))<br/>
+                                <span>@Html.ValidationMessageFor(x => x.RoomNoId)</span><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                @Html.LabelFor(x => x.SevenDayWeekId)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(x => x.SevenDayWeekId, new SelectList(ViewBag.Days, "Value", "Text"))<br />
+                                <span>@Html.ValidationMessageFor(x => x.SevenDayWeekId)</span><br />
+                            </td>
+                        </tr>
+                    </table>
+
+
+                   
+
+                    
+
+                    @Html.LabelFor(x => x.TimeFrom);
+                    <input id="TimeFrom" name="TimeFrom" type="time">
+                    <span>@Html.ValidationMessageFor(x => x.TimeFrom)</span><br />
+
+                    @Html.LabelFor(x => x.TimeTo);
+                    <input id="TimeTo" name="TimeTo" type="time">
+                    <span>@Html.ValidationMessageFor(x => x.TimeFrom)</span><br />
+
+                    <p align="center">
+                        <button>Save</button>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    if (ViewBag.Message != "")
+    {
+        <script language="javascript">
+            alert('@ViewData["Message"]');
+        </script>
+    }
+}
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script type="text/javascript">
+
+    function checkCredit() {
+        if ($("#RemainingCredit").val() - $("#Credit").val() < 0) {
+            var ans = confirm("Teacher's Remaining Credit going to negative.Are You Sure?");
+            if (ans === true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    $(document).ready(function () {
+        $("#DepartmentId").change(function () {
+            var deptId = $("#DepartmentId").val();
+            $("#CourseId").empty();
+
+            $("#CourseId").append('<option value= "">---Select---</option>');
+
+            var json = {
+                departmentId: deptId
+
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetAllCoursesByDeptId", "Courses")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    $.each(data, function (key, value) {
+                        $("#CourseId").append('<option value=' + value.Id + '>' + value.CourseCode + '</option>');
+
+                    });
+
+                }
+            });
+        });
+    });
+
+</script>

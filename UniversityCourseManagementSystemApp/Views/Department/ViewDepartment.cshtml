@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "View Department";
+}
+<div class="container" style="width: 70%; margin: 0 auto">
+    <div class="row registered table">
+        <div class="col-md-12">
+            <h3>View Department</h3>
+            <table id="myTable" class="myTable">
+                <thead>
+                    <tr>
+                        <th style="width: 20%">Code</th>
+                        <th style ="width: 50%">Name</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+<script>
+    var table = $('#myTable').DataTable();
+    $(document).ready(function () {
+        var json = {
+        };
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetAllDepartment", "Department")',
+            contentType: "application/json; charset=utf-8",
+
+            data: JSON.stringify(json),
+            success: function (data) {
+                $("#myTable").show();
+
+                table.clear().draw(false);
+                $.each(data, function (key, value) {
+                    table.row.add([
+                            value.DeptCode, value.DeptName
+                    ]
+                    ).draw(false);
+                });
+
+            }
+        });
+
+    });
+</script>
+

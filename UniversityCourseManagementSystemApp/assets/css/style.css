@@ -1,0 +1,299 @@
+/*
+Project-name: Pre-registration
+Author : Ahasanul Kalam Akib
+*/
+
+
+
+/*-----------------------START GLOBAL STYLE--------------------*/
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:400,700');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 26px;
+}
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.sm50 {
+    margin-top: 50px;
+}
+
+.sm100 {
+    margin-top: 100px;
+}
+
+.sm200 {
+    margin-top: 200px;
+}
+/*-----------------------END GLOBAL STYLE----------------------*/
+/*-----------------------body-------------------------------*/
+body {
+    width: 100%;
+    height: auto;
+}
+/*------------------------Header---------------------*/
+
+header {
+    background-color: #3b3b3b;
+    color: #f3f3f3;
+    height: 60px;
+}
+
+.site-navigation {
+    text-align: right;
+}
+
+ul.navigation li {
+    display: inline-block;
+    list-style: none;
+    padding: 15px 30px;
+}
+
+    ul.navigation li a {
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
+        ul.navigation li a:hover,
+        ul.navigation li a:active {
+            color: #f26522;
+        }
+
+.site-logo h4 {
+    margin-left: 30px;
+    font-family: 'PT Sans' !important;
+    font-weight: 700;
+    padding-top: 8px;
+}
+
+/*----------------addDepartment-Form-------------*/
+.addDepartment {
+    background: #eceeee;
+    border: 1px solid #000;
+    color: #000;
+    margin-top: 60px;
+}
+
+    .addDepartment h3 {
+        text-align: center;
+    }
+
+    .addDepartment form label {
+        font-size: 15px;
+        color: #000;
+        padding-left: 20px;
+    }
+
+    .addDepartment form input {
+        width: 90%;
+        margin: 5px 5px 5px 20px;
+        padding: 5px 20px;
+        color: #000;
+        font-size: 17px;
+    }
+
+    .addDepartment form textarea {
+        width: 90%;
+        margin: 5px 5px 5px 20px;
+        padding: 5px 20px;
+        color: #000;
+        font-size: 17px;
+    }
+
+    .addDepartment form span {
+        width: 90%;
+        margin: 5px 5px 5px 20px;
+        padding: 5px 5px;
+        color: #000;
+        font-size: 13px;
+        color: red;
+    }
+
+    .addDepartment form button {
+        padding: 10px 20px;
+        margin-left: 15px;
+        color: #fff;
+        background-color: #325d88;
+        border: none;
+        margin-bottom: 30px;
+        width: 40%;
+    }
+
+    .addDepartment form a {
+        text-decoration: none;
+    }
+
+/*--------------------footer----------------*/
+footer {
+    background-color: #3b3b3b;
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+    margin-top: 300px;
+}
+
+
+/*----------------------Student profile----------------------------*/
+.st_profile {
+    margin-top: 40px;
+    background-color: #E8E8FF;
+}
+
+    .st_profile h3, h4 {
+        text-align: center;
+    }
+
+    .st_profile img {
+        width: 60%;
+        padding: 20px;
+        height: 200px;
+        margin-left: 90px;
+    }
+
+    .st_profile strong {
+        font-size: 17px;
+        color: #1A5276;
+    }
+
+    .st_profile span {
+        font-size: 15px;
+        padding: 5px;
+        font-weight: bold;
+    }
+
+.registered table {
+    width: 50%;
+    border: 1px;
+    background: red;
+}
+
+    .registered table th {
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        background-color: #51AEB9;
+        border: 1px solid;
+    }
+
+    .registered table tr td {
+        padding: 5px;
+        text-align: center;
+        font-size: 15px;
+        border: 1px solid #ddd;
+    }
+
+.registered h3 {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.registered h4 {
+    text-align: center;
+    margin-top: 10px;
+    color: #1A5276;
+}
+
+.add_courses {
+    margin: 20px;
+}
+
+.registered a {
+    text-decoration: none;
+}
+
+.myTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .myTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .myTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .myTable tr:hover {
+        background-color: #ddd;
+    }
+
+    .myTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+
+
+/*-----------MODAL----------------*/
+.modal-body form span {
+    font-size: 15px;
+    color: #000;
+    padding-left: 20px;
+}
+
+.modal-body form input {
+    width: 90%;
+    margin: 5px 5px 5px 15px;
+    padding: 5px 20px;
+    color: #000;
+    font-size: 17px;
+}
+
+.modal-body form button {
+    padding: 10px 20px;
+    margin-left: 20px;
+    color: #fff;
+    background-color: #325d88;
+    border: none;
+    margin-bottom: 30px;
+}
+
+.modal-body form a {
+    text-decoration: none;
+}
+
+
+/*-------------------------all student---------------------*/
+
+.student_semester p {
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.student_semester a {
+    text-decoration: none;
+}
+
+
+
+.form-group #datepicker input {
+    width: 90%;
+    margin: 5px 5px 5px 20px;
+    padding: 5px 20px;
+    color: #000;
+    font-size: 17px;
+}
+.addDepartment form span.input-group-addon  {
+    display: none;
+
+}

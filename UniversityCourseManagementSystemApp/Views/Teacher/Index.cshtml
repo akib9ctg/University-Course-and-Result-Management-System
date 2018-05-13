@@ -1,0 +1,58 @@
+﻿@model UniversityCourseManagementSystemApp.Models.Teacher
+@{
+    ViewBag.Title = "Save Teacher";
+}
+<div class="container sm100">
+    <div class="row st_login_form">
+        <div class="col-md-offset-3 col-md-6">
+            <div class="addDepartment">
+                <h3>Save Teacher</h3>
+                @using (Html.BeginForm(null, null, FormMethod.Post))
+                {
+                    @Html.LabelFor(x => x.TeacherName)<br />
+                    @Html.TextBoxFor(x => x.TeacherName)<br />
+                    <span>@Html.ValidationMessageFor(x => x.TeacherName)</span><br />
+
+                    @Html.LabelFor(x => x.TeacherAddress)<br />
+                    @Html.TextAreaFor(x => x.TeacherAddress)<br />
+                    <span>@Html.ValidationMessageFor(x => x.TeacherAddress)</span><br />
+
+                    @Html.LabelFor(x => x.TeacherEmail)<br />
+                    @Html.TextBoxFor(x => x.TeacherEmail)<br />
+                    <span>@Html.ValidationMessageFor(x => x.TeacherEmail)</span><br />
+
+                    @Html.LabelFor(x => x.TeacherContactNo)<br />
+                    @Html.TextBoxFor(x => x.TeacherContactNo)<br />
+                    <span>@Html.ValidationMessageFor(x => x.TeacherContactNo)</span><br />
+
+                    @Html.LabelFor(x => x.TeacherDesignationId)
+                    @Html.DropDownListFor(x => x.TeacherDesignationId, new SelectList(ViewBag.Designation, "Value", "Text"))<br />
+                    <span>@Html.ValidationMessageFor(x => x.TeacherDesignationId)</span><br />
+
+                    @Html.LabelFor(x => x.TeacherDepartmentId)
+                    @Html.DropDownListFor(x => x.TeacherDepartmentId, new SelectList(ViewBag.Departments, "Value", "Text"))<br />
+                    <span>@Html.ValidationMessageFor(x => x.TeacherDepartmentId)</span><br />
+
+                    @Html.LabelFor(x => x.TeacherCredit)<br />
+                    @Html.TextBoxFor(x => x.TeacherCredit)<br />
+                    <span>@Html.ValidationMessageFor(x => x.TeacherCredit)</span><br />
+
+                    <p align="center">
+                        <button>Save</button>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    if (@ViewData["Message"] != "")
+    {
+        <script language="javascript">
+            alert('@ViewData["Message"]');
+        </script>
+    }
+}
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>

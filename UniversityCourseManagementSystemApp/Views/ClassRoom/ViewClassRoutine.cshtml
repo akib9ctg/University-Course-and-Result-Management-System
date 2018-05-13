@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "View Class Routine";
+}
+<div class="container" style="width: 70%; margin: 0 auto">
+    <div class="row registered table">
+        <div class="col-md-12">
+            <h3>View Class Schedule and Room Allocation Information</h3>
+            @Html.Label("Department ")
+            @Html.DropDownList("Department", new SelectList(ViewBag.Departments, "Value", "Text"))<br /><br />
+            <table id="myTable" class="myTable">
+                <thead>
+                    <tr>
+                        <th style="width: 10%">Course Code</th>
+                        <th style="width: 10%">Course Title</th>
+                        <th style="width: 50%">Schedule Info</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+<script>
+    var table = $('#myTable').DataTable();
+    $(document).ready(function () {
+        $("#Department").change(function () {
+
+            var deptId = $("#Department").val();
+            table.clear().draw(false);
+            var json = {
+                departmentId: deptId
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetAllClassSchedule", "ClassRoom")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    $("#myTable").show();
+
+                    table.clear().draw(false);
+                    $.each(data, function (key, value) {
+                        table.row.add([
+                                value.CourseCode, value.CourseName, value.ScheduleInfo]
+                        ).draw(false);
+                    });
+
+                }
+            });
+
+        });
+    });
+</script>
